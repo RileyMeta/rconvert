@@ -10,10 +10,12 @@ float kilograms(float weight);
 float pounds(float weight);
 float meters(float height);
 float feet(float height);
+float fahrenheit(float temp);
+float celsius(float temp);
 
 
-// Start of the actual App
-const char VERSION[] = "0.1";
+//Start of the actual App
+const char VERSION[] = "0.2";
 
 int main(int argc, char* argv[]) {
     char pre[64];
@@ -45,6 +47,10 @@ int main(int argc, char* argv[]) {
         float result = feet(units);
     } else if (strcmp(argv[1], "-FtoM") == 0 || strcmp(argv[1], "--meters") == 0) {
         float result = meters(units);
+    } else if (strcmp(argv[1], "-FtoC") == 0 || strcmp(argv[1], "--fahrenheit") == 0) {
+        float result = fahrenheit(units);
+    } else if (strcmp(argv[1], "-CtoF") == 0 || strcmp(argv[1], "--Celsius") == 0) {
+        float result = celsius(units);
     } else {
         printf("Unknown Input: %s", argv[1]);
         return 1;
@@ -65,42 +71,56 @@ void help_menu(char *app) {
     printf("  -KtoL --pounds\tKilograms to Pounds (LBS)\n");
     printf("  -MtoF --feet\t\tMeters to Feet\n");
     printf("  -FtoM --meters\tFeet to Meters\n");
+    printf("  -FtoC --celsius\tFahrenheit to Celsius\n");
+    printf("  -CtoF --fahrenheit\tCelsius to Fahrenheit\n");
     printf("\nFor but reporting instructions, please see:\n");
     printf("<https://github.com/RileyMeta/rconvert/issues>\n");
 }
 
 float miles(float distance) {
     float result = distance / 1.60934;
-    printf("%.2f km is %.2f miles", distance, result);
+    printf("%.2f km is %.2f miles\n", distance, result);
     return result;
 }
 
 float kilometers(float distance) {
     float result = distance * 1.60934;
-    printf("%.2f miles is %.2f km", distance, result);
+    printf("%.2f miles is %.2f km\n", distance, result);
     return result;
 }
 
 float kilograms(float weight) {
     float result = weight * 0.453592;
-    printf("%.2f lbs is %.2f kg", weight, result);
+    printf("%.2f lbs is %.2f kg\n", weight, result);
     return result;
 }
 
 float pounds(float weight) {
     float result = weight / 2.205;
-    printf("%.2f kg is %.2f lbs", weight, result);
+    printf("%.2f kg is %.2f lbs\n", weight, result);
     return result;
 }
 
 float meters(float height) {
     float result = height * 3.281;
-    printf("%.2f feet is %.2f meters", height, result);
+    printf("%.2f feet is %.2f meters\n", height, result);
     return result;
 }
 
 float feet(float height) {
     float result = height / 3.281;
-    printf("%.2f meters is %.2f feet", height, result);
+    printf("%.2f meters is %.2f feet\n", height, result);
+    return result;
+}
+
+float fahrenheit(float temp) {
+    float result = (9/5) * temp + 32;
+    printf("%.2f°C is %.2f°F\n", temp, result);
+    return result;
+}
+
+float celsius(float temp) {
+    float result = (temp - 32) * 5/9;
+    printf("%.2f°F is %.2f°C\n", temp, result);
     return result;
 }
