@@ -93,7 +93,7 @@ void help_menu(char *app) {
     printf("  -ItoC --centimeters\tInches to Centimeters\n");
     printf("  -FtoC --celsius\tFahrenheit to Celsius\n");
     printf("  -CtoF --fahrenheit\tCelsius to Fahrenheit\n");
-    printf("\nFor but reporting instructions, please see:\n");
+    printf("\nFor bug reporting instructions, please see:\n");
     printf("<https://github.com/RileyMeta/rconvert/issues>\n");
 }
 
