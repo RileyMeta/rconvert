@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <errno.h>
 
 void help_menu(char *app);
+
+int is_float(const char *s);
 
 float miles(float distance);
 float kilometers(float distance);
@@ -29,36 +32,45 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    if (argc >= 3) {
-        units = atof(argv[2]);
-    }
-
     if (strcmp(argv[1], "--help") == 0) {
         help_menu(argv[0]);
-    } else if (strcmp(argv[1], "-V") == 0 || (strcmp(argv[1], "--version") == 0)) {
+        return 0;
+    } else if (strcmp(argv[1], "--version") == 0 || strcmp(argv[1], "-V") == 0) {
         printf("%s Version %s\n", argv[0], VERSION);
-    } else if (strcmp(argv[1], "-MtoK") == 0 || strcmp(argv[1], "--kilometers") == 0) {
-        float result = miles(units);
-    } else if (strcmp(argv[1], "-KtoM") == 0 || strcmp(argv[1], "--miles") == 0) {
-        float result = kilometers(units);
-    } else if (strcmp(argv[1], "-LtoK") == 0 || strcmp(argv[1], "--kilograms") == 0) {
-        float result = kilograms(units);
-    } else if (strcmp(argv[1], "-KtoL") == 0 || strcmp(argv[1], "--pounds") == 0) {
-        float result = pounds(units);
-    } else if (strcmp(argv[1], "-MtoF") == 0 || strcmp(argv[1], "--feet") == 0) {
-        float result = feet(units);
-    } else if (strcmp(argv[1], "-FtoM") == 0 || strcmp(argv[1], "--meters") == 0) {
-        float result = meters(units);
-    } else if (strcmp(argv[1], "-CtoI") == 0 || strcmp(argv[1], "--inches") == 0) {
-        float result = inches(units);
-    } else if (strcmp(argv[1], "-ItoC") == 0 || strcmp(argv[1], "--centimeters") == 0) {
-        float result = centimeters(units);
-    } else if (strcmp(argv[1], "-FtoC") == 0 || strcmp(argv[1], "--celsius") == 0) {
-        float result = celsius(units);
-    } else if (strcmp(argv[1], "-CtoF") == 0 || strcmp(argv[1], "--fahrenheit") == 0) {
-        float result = fahrenheit(units);
-     } else {
-        printf("Unknown Input: %s\n", argv[1]);
+        return 0;
+    }
+
+
+    if (argc >= 3)
+        units = atof(argv[2]);
+
+    if (is_float(argv[2])) { // Validate before executing
+        if (strcmp(argv[1], "-MtoK") == 0 || strcmp(argv[1], "--kilometers") == 0) {
+            float result = miles(units);
+        } else if (strcmp(argv[1], "-KtoM") == 0 || strcmp(argv[1], "--miles") == 0) {
+            float result = kilometers(units);
+        } else if (strcmp(argv[1], "-LtoK") == 0 || strcmp(argv[1], "--kilograms") == 0) {
+            float result = kilograms(units);
+        } else if (strcmp(argv[1], "-KtoL") == 0 || strcmp(argv[1], "--pounds") == 0) {
+            float result = pounds(units);
+        } else if (strcmp(argv[1], "-MtoF") == 0 || strcmp(argv[1], "--feet") == 0) {
+            float result = feet(units);
+        } else if (strcmp(argv[1], "-FtoM") == 0 || strcmp(argv[1], "--meters") == 0) {
+            float result = meters(units);
+        } else if (strcmp(argv[1], "-CtoI") == 0 || strcmp(argv[1], "--inches") == 0) {
+            float result = inches(units);
+        } else if (strcmp(argv[1], "-ItoC") == 0 || strcmp(argv[1], "--centimeters") == 0) {
+            float result = centimeters(units);
+        } else if (strcmp(argv[1], "-FtoC") == 0 || strcmp(argv[1], "--celsius") == 0) {
+            float result = celsius(units);
+        } else if (strcmp(argv[1], "-CtoF") == 0 || strcmp(argv[1], "--fahrenheit") == 0) {
+            float result = fahrenheit(units);
+        } else {
+            printf("Unknown Input: %s\n", argv[1]);
+            return 1;
+        }
+    } else {
+        printf("Error: %s is not a number\n", argv[2]);
         return 1;
     }
 
@@ -83,6 +95,15 @@ void help_menu(char *app) {
     printf("  -CtoF --fahrenheit\tCelsius to Fahrenheit\n");
     printf("\nFor but reporting instructions, please see:\n");
     printf("<https://github.com/RileyMeta/rconvert/issues>\n");
+}
+
+int is_float(const char *s) {
+    if (s == NULL || *s == '\0') return 0;
+
+    char *end;
+    errno = 0;
+    strtod(s, &end);
+    return errno == 0 && *end == '\0';
 }
 
 float miles(float distance) {
