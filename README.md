@@ -1,7 +1,7 @@
 # rconvert
 A simple command line utility to convert Metric and Imperial
 
-Easily convert:
+## Easily convert:
 - Miles to Kilometers
 - Kilometers to Miles
 - Kilograms to Pounds
