@@ -10,6 +10,8 @@ float kilograms(float weight);
 float pounds(float weight);
 float meters(float height);
 float feet(float height);
+float inches(float units);
+float centimeters(float units);
 float fahrenheit(float temp);
 float celsius(float temp);
 
@@ -47,11 +49,15 @@ int main(int argc, char* argv[]) {
         float result = feet(units);
     } else if (strcmp(argv[1], "-FtoM") == 0 || strcmp(argv[1], "--meters") == 0) {
         float result = meters(units);
+    } else if (strcmp(argv[1], "-CtoI") == 0 || strcmp(argv[1], "--inches") == 0) {
+        float result = inches(units);
+    } else if (strcmp(argv[1], "-ItoC") == 0 || strcmp(argv[1], "--centimeters") == 0) {
+        float result = centimeters(units);
     } else if (strcmp(argv[1], "-FtoC") == 0 || strcmp(argv[1], "--celsius") == 0) {
         float result = celsius(units);
     } else if (strcmp(argv[1], "-CtoF") == 0 || strcmp(argv[1], "--fahrenheit") == 0) {
         float result = fahrenheit(units);
-    } else {
+     } else {
         printf("Unknown Input: %s\n", argv[1]);
         return 1;
     }
@@ -71,6 +77,8 @@ void help_menu(char *app) {
     printf("  -KtoL --pounds\tKilograms to Pounds (LBS)\n");
     printf("  -MtoF --feet\t\tMeters to Feet\n");
     printf("  -FtoM --meters\tFeet to Meters\n");
+    printf("  -CtoI --inches\tCentimeters to Inches\n");
+    printf("  -ItoC --centimeters\tInches to Centimeters\n");
     printf("  -FtoC --celsius\tFahrenheit to Celsius\n");
     printf("  -CtoF --fahrenheit\tCelsius to Fahrenheit\n");
     printf("\nFor but reporting instructions, please see:\n");
@@ -122,5 +130,17 @@ float fahrenheit(float temp) {
 float celsius(float temp) {
     float result = (temp * 9.0 / 5.0) + 32.0;
     printf("%.2f°F is %.2f°C\n", temp, result);
+    return result;
+}
+
+float inches(float units) {
+    float result = units / 2.54;
+    printf("%.2f cm. is %.2f in.\n", units, result);
+    return result;
+}
+
+float centimeters(float units) {
+    float result = units * 2.54;
+    printf("%.2f in. is %.2f cm.\n", units, result);
     return result;
 }
