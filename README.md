@@ -8,5 +8,7 @@ Easily convert:
 - Pounds to Kilograms
 - Feet to Meters
 - Meters to Feet
+- Inches to Centimeters
+- Centimeters to Inches
 - Fahrenheit to Celsius
 - Celsius to Fahrenheit
