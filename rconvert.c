@@ -47,12 +47,12 @@ int main(int argc, char* argv[]) {
         float result = feet(units);
     } else if (strcmp(argv[1], "-FtoM") == 0 || strcmp(argv[1], "--meters") == 0) {
         float result = meters(units);
-    } else if (strcmp(argv[1], "-FtoC") == 0 || strcmp(argv[1], "--fahrenheit") == 0) {
-        float result = fahrenheit(units);
-    } else if (strcmp(argv[1], "-CtoF") == 0 || strcmp(argv[1], "--Celsius") == 0) {
+    } else if (strcmp(argv[1], "-FtoC") == 0 || strcmp(argv[1], "--celsius") == 0) {
         float result = celsius(units);
+    } else if (strcmp(argv[1], "-CtoF") == 0 || strcmp(argv[1], "--fahrenheit") == 0) {
+        float result = fahrenheit(units);
     } else {
-        printf("Unknown Input: %s", argv[1]);
+        printf("Unknown Input: %s\n", argv[1]);
         return 1;
     }
 
@@ -114,13 +114,13 @@ float feet(float height) {
 }
 
 float fahrenheit(float temp) {
-    float result = (9/5) * temp + 32;
+    float result = (9.0 / 5.0) * temp + 32;
     printf("%.2f°C is %.2f°F\n", temp, result);
     return result;
 }
 
 float celsius(float temp) {
-    float result = (temp - 32) * 5/9;
+    float result = (temp * 9.0 / 5.0) + 32.0;
     printf("%.2f°F is %.2f°C\n", temp, result);
     return result;
 }
