@@ -46,25 +46,25 @@ int main(int argc, char* argv[]) {
 
     if (is_float(argv[2])) { // Validate before executing
         if (strcmp(argv[1], "-MtoK") == 0 || strcmp(argv[1], "--kilometers") == 0) {
-            float result = miles(units);
+            miles(units);
         } else if (strcmp(argv[1], "-KtoM") == 0 || strcmp(argv[1], "--miles") == 0) {
-            float result = kilometers(units);
+            kilometers(units);
         } else if (strcmp(argv[1], "-LtoK") == 0 || strcmp(argv[1], "--kilograms") == 0) {
-            float result = kilograms(units);
+            kilograms(units);
         } else if (strcmp(argv[1], "-KtoL") == 0 || strcmp(argv[1], "--pounds") == 0) {
-            float result = pounds(units);
+            pounds(units);
         } else if (strcmp(argv[1], "-MtoF") == 0 || strcmp(argv[1], "--feet") == 0) {
-            float result = feet(units);
+            feet(units);
         } else if (strcmp(argv[1], "-FtoM") == 0 || strcmp(argv[1], "--meters") == 0) {
-            float result = meters(units);
+            meters(units);
         } else if (strcmp(argv[1], "-CtoI") == 0 || strcmp(argv[1], "--inches") == 0) {
-            float result = inches(units);
+            inches(units);
         } else if (strcmp(argv[1], "-ItoC") == 0 || strcmp(argv[1], "--centimeters") == 0) {
-            float result = centimeters(units);
+            centimeters(units);
         } else if (strcmp(argv[1], "-FtoC") == 0 || strcmp(argv[1], "--celsius") == 0) {
-            float result = celsius(units);
+            celsius(units);
         } else if (strcmp(argv[1], "-CtoF") == 0 || strcmp(argv[1], "--fahrenheit") == 0) {
-            float result = fahrenheit(units);
+            fahrenheit(units);
         } else {
             printf("Unknown Input: %s\n", argv[1]);
             return 1;
