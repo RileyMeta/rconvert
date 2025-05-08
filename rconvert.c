@@ -110,13 +110,13 @@ float pounds(float weight) {
 }
 
 float meters(float height) {
-    float result = height * 3.281;
+    float result = height / 3.281;
     printf("%.2f feet is %.2f meters\n", height, result);
     return result;
 }
 
 float feet(float height) {
-    float result = height / 3.281;
+    float result = height * 3.281;
     printf("%.2f meters is %.2f feet\n", height, result);
     return result;
 }
