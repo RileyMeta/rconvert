@@ -12,3 +12,5 @@ Easily convert:
 - Centimeters to Inches
 - Fahrenheit to Celsius
 - Celsius to Fahrenheit
+- Gallons to Liters
+- Liters to Gallons
