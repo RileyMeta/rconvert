@@ -17,6 +17,8 @@ float inches(float units);
 float centimeters(float units);
 float fahrenheit(float temp);
 float celsius(float temp);
+float gallons(float volume);
+float liters(float volume);
 
 
 //Start of the actual App
@@ -65,6 +67,10 @@ int main(int argc, char* argv[]) {
             celsius(units);
         } else if (strcmp(argv[1], "-CtoF") == 0 || strcmp(argv[1], "--fahrenheit") == 0) {
             fahrenheit(units);
+        } else if (strcmp(argv[1], "-LtoG") == 0 || strcmp(argv[1], "--gallons") == 0) {
+            gallons(units);
+        } else if (strcmp(argv[1], "-GtoL") == 0 || strcmp(argv[1], "--liters") == 0) {
+            liters(units);
         } else {
             printf("Unknown Input: %s\n", argv[1]);
             return 1;
@@ -163,5 +169,17 @@ float inches(float units) {
 float centimeters(float units) {
     float result = units * 2.54;
     printf("%.2f in. is %.2f cm.\n", units, result);
+    return result;
+}
+
+float gallons(float volume) {
+    float result = volume / 3.785;
+    printf("%.2f liters is %.2f gallons\n", volume, result);
+    return result;
+}
+
+float liters(float volume) {
+    float result = volume * 3.785;
+    printf("%.2f gallons is %.2f liters\n", volume, result);
     return result;
 }
