@@ -143,13 +143,13 @@ float feet(float height) {
 }
 
 float fahrenheit(float temp) {
-    float result = (9.0 / 5.0) * temp + 32;
+    float result = (temp * 9.0 / 5.0) + 32;
     printf("%.2f°C is %.2f°F\n", temp, result);
     return result;
 }
 
 float celsius(float temp) {
-    float result = (temp * 9.0 / 5.0) + 32.0;
+    float result = (temp - 32.0) * 5.0 / 9.0;
     printf("%.2f°F is %.2f°C\n", temp, result);
     return result;
 }
