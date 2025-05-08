@@ -1,5 +1,5 @@
 # rconvert
-A simple command line utility to convery Metric and Imperial
+A simple command line utility to convert Metric and Imperial
 
 Easily convert:
 - Miles to Kilometers
