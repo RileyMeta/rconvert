@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -O2
 
 # Source and object files
-SRCS = main.c
+SRCS = rconvert.c
 OBJS = $(SRCS:.c=.o)
 
 # Output executable
