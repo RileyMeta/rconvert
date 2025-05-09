@@ -18,3 +18,5 @@ A simple command line utility to convert Metric and Imperial
 - Kelvin to Celsius
 - Gallons to Liters
 - Liters to Gallons
+
+![image](https://github.com/user-attachments/assets/8c4822bd-12ef-4134-8e51-5748d38e88f4)
