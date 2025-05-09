@@ -12,5 +12,9 @@ A simple command line utility to convert Metric and Imperial
 - Centimeters to Inches
 - Fahrenheit to Celsius
 - Celsius to Fahrenheit
+- Fahrenheit to Kelvin
+- Celsius to Kelvin
+- Kelvin to Fahrenheit
+- Kelvin to Celsius
 - Gallons to Liters
 - Liters to Gallons
