@@ -17,6 +17,10 @@ float inches(float units);
 float centimeters(float units);
 float fahrenheit(float temp);
 float celsius(float temp);
+float fkelvin(float units);
+float ckelvin(float units);
+float kfahrenheit(float units);
+float kcelsius(float units);
 float gallons(float volume);
 float liters(float volume);
 
@@ -67,6 +71,14 @@ int main(int argc, char* argv[]) {
             celsius(units);
         } else if (strcmp(argv[1], "-CtoF") == 0 || strcmp(argv[1], "--fahrenheit") == 0) {
             fahrenheit(units);
+        } else if (strcmp(argv[1], "-FtoK") == 0 || strcmp(argv[1], "--fkelvin") == 0) {
+            fkelvin(units);
+        } else if (strcmp(argv[1], "-CtoK") == 0 || strcmp(argv[1], "--ckelvin") == 0) {
+            ckelvin(units);
+        } else if (strcmp(argv[1], "-KtoF") == 0 || strcmp(argv[1], "--kfahrenheit") == 0) {
+            kfahrenheit(units);
+        } else if (strcmp(argv[1], "-KtoC") == 0 || strcmp(argv[1], "--kcelsius") == 0) {
+            kcelsius(units);
         } else if (strcmp(argv[1], "-LtoG") == 0 || strcmp(argv[1], "--gallons") == 0) {
             gallons(units);
         } else if (strcmp(argv[1], "-GtoL") == 0 || strcmp(argv[1], "--liters") == 0) {
@@ -99,6 +111,10 @@ void help_menu(char *app) {
     printf("  -ItoC --centimeters\tInches to Centimeters\n");
     printf("  -FtoC --celsius\tFahrenheit to Celsius\n");
     printf("  -CtoF --fahrenheit\tCelsius to Fahrenheit\n");
+    printf("  -FtoK --fkelvin\tFahrenheit to Kelvin\n");
+    printf("  -CtoK --ckelvin\tCelsius to Kelvin\n");
+    printf("  -KtoF --kfahrenheit\tKelvin to Fahrenheit\n");
+    printf("  -KtoC --kcelsius\tKelvin to Celsius\n");
     printf("  -LtoG --gallons\tLiters to Gallons\n");
     printf("  -GtoL --liters\tGallons to Liters\n");
     printf("\nFor bug reporting instructions, please see:\n");
@@ -159,6 +175,30 @@ float fahrenheit(float temp) {
 float celsius(float temp) {
     float result = (temp - 32.0) * 5.0 / 9.0;
     printf("%.2f°F is %.2f°C\n", temp, result);
+    return result;
+}
+
+float fkelvin(float units) {
+    float result = (units - 32.0) * 5.0 / 9.0 + 273.15; 
+    printf("%.2f°F is %.2f°K\n", units, result);
+    return result;
+}
+
+float ckelvin(float units) {
+    float result = units + 273.15;
+    printf("%.2f°C is %.2f°K \n", units, result);
+    return result;
+}
+
+float kfahrenheit(float units) {
+    float result = (units - 273.15) * 9.0 / 5.0 + 32;
+    printf("%.2f°K is %.2f°F \n", units, result);
+    return result;
+}
+
+float kcelsius(float units) {
+    float result = (units - 273.15);
+    printf("%.2f°K is %.2f°C \n", units, result);
     return result;
 }
 
