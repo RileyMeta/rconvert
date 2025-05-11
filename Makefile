@@ -26,3 +26,8 @@ clean:
 
 .PHONY: all clean
 
+install: $(TARGET)
+	sudo install -Dm755 $(TARGET) /usr/local/bin/$(TARGET)
+
+uninstall:
+	sudo rm -f /usr/local/bin/$(TARGET)
