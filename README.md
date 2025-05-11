@@ -1,6 +1,9 @@
 # rconvert
 A simple command line utility to convert Metric and Imperial
 
+# Example
+![image](https://github.com/user-attachments/assets/8c4822bd-12ef-4134-8e51-5748d38e88f4)
+
 ## Easily convert:
 - Miles to Kilometers
 - Kilometers to Miles
@@ -19,4 +22,8 @@ A simple command line utility to convert Metric and Imperial
 - Gallons to Liters
 - Liters to Gallons
 
-![image](https://github.com/user-attachments/assets/8c4822bd-12ef-4134-8e51-5748d38e88f4)
+# Install Steps
+```sh
+make
+make install
+```
