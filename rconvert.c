@@ -29,9 +29,7 @@ float liters(float volume);
 const char VERSION[] = "0.2";
 
 int main(int argc, char* argv[]) {
-    char pre[64];
-    char post[64];
-    float units;
+    float units = 0;
 
     if (argc < 2) {
         printf("Usage: %s <unit> <value>\n", argv[0]);
@@ -52,9 +50,11 @@ int main(int argc, char* argv[]) {
 
     if (is_float(argv[2])) { // Validate before executing
         if (strcmp(argv[1], "-MtoK") == 0 || strcmp(argv[1], "--kilometers") == 0) {
-            miles(units);
-        } else if (strcmp(argv[1], "-KtoM") == 0 || strcmp(argv[1], "--miles") == 0) {
+            // miles(units);
             kilometers(units);
+        } else if (strcmp(argv[1], "-KtoM") == 0 || strcmp(argv[1], "--miles") == 0) {
+            // kilometers(units);
+               miles(units);
         } else if (strcmp(argv[1], "-LtoK") == 0 || strcmp(argv[1], "--kilograms") == 0) {
             kilograms(units);
         } else if (strcmp(argv[1], "-KtoL") == 0 || strcmp(argv[1], "--pounds") == 0) {
