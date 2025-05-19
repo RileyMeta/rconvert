@@ -149,7 +149,7 @@ float kilograms(float weight) {
 }
 
 float pounds(float weight) {
-    float result = weight / 2.205;
+    float result = weight * 2.205;
     printf("%.2f kg is %.2f lbs\n", weight, result);
     return result;
 }
