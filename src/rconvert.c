@@ -26,7 +26,7 @@ float liters(float volume);
 
 
 //Start of the actual App
-const char VERSION[] = "0.2";
+const char VERSION[] = "1.0";
 
 int main(int argc, char* argv[]) {
     float units = 0;
