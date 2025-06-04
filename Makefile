@@ -1,33 +1,44 @@
 # Compiler and flags
-CC = gcc
-CFLAGS = -Wall -Wextra -O2
+CC := gcc
+CFLAGS := -Wall -Wextra -O2
+
+# Directories
+SRC_DIR := src
+BUILD_DIR := build
+BIN_DIR := /usr/local/bin
 
 # Source and object files
-SRCS = rconvert.c
-OBJS = $(SRCS:.c=.o)
+SRCS := $(wildcard $(SRC_DIR)/*.c)
+OBJS := $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRCS))
 
 # Output executable
-TARGET = rconvert
+TARGET := rconvert
+TARGET_PATH := $(BUILD_DIR)/$(TARGET)
 
 # Default rule
-all: $(TARGET)
+all: $(TARGET_PATH)
 
 # Link object files to create the executable
-$(TARGET): $(OBJS)
+$(TARGET_PATH): $(OBJS)
+	@mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) -o $@ $^
 
-# Compile .c files into .o files
-%.o: %.c
+# Compile source files into object files
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Clean up build files
-clean:
-	rm -f $(OBJS) $(TARGET)
+# Install binary
+install: $(TARGET_PATH)
+	sudo install -Dm755 $< "$(DESTDIR)$(BIN_DIR)/$(TARGET)"
 
-.PHONY: all clean
-
-install: $(TARGET)
-	sudo install -Dm755 $(TARGET) /usr/local/bin/$(TARGET)
-
+# Uninstall binary
 uninstall:
-	sudo rm -f /usr/local/bin/$(TARGET)
+	sudo rm -f $(BIN_DIR)/$(TARGET)
+
+# Clean up build artifacts
+clean:
+	rm -rf $(BUILD_DIR)
+
+.PHONY: all clean install uninstall
+
